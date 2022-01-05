@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<metadata>
+  <enumerations>
+    <enumeration id="contacts.enumeration.contact.gender" values="Male^Female" />
+  </enumerations>
+
+
+  <entities>
+    <entity id="Contacts.Contact">
+      <properties>
+        <property id="PrimaryImageRef" value="$GUID$" />
+      </properties>
+      <extensions>
+        <extension property="AgeYears" type="contacts.entityextension.ageyears" />
+        <extension property="AgeMonths" type="contacts.entityextension.agemonths" />
+      </extensions>
+    </entity>
+  </entities>
+</metadata>
+

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<metadata>
+    <enumerations>
+      <enumeration id="reservations.enumeration.reservation.paymentmethod" values="Cash Payment^Card Payment" />
+    </enumerations>
+
+
+  <entities>
+    <entity id="Reservations.Reservation">
+      <properties>
+        <property id="ArrivalDate" value="$SYSDATE$"/>
+        <property id="DepartureDate" value="$SYSDATE$"/>
+        <property id="ReservationStatus" value="CREATED"/>
+        <property id="PaymentStatus" value="Not Paid"/>
+      </properties>
+      <extensions>
+        <extension property="StatusColor" type="CodeExtension" >
+              <parameters>
+                <parameter id="Source" >
+                  <![CDATA[
+                      if (record == null) 
+                        return "Gray";
+                
+                      if(string.Equals(record["ReservationStatus"], "CONFIRMED"))
+                        return "Blue";
+                      if(string.Equals(record["ReservationStatus"], "CHECKED-IN"))
+                        return "Green";
+                      if(string.Equals(record["ReservationStatus"], "CHECKED-OUT"))
+                        return "Red";
+                        if(string.Equals(record["ReservationStatus"], "CANCEL"))
+                        return "Black";
+                      return "Gray";
+                    ]]>
+                </parameter>
+              </parameters>
+            </extension>
+      </extensions>
+    </entity>
+  </entities>
+</metadata>
+

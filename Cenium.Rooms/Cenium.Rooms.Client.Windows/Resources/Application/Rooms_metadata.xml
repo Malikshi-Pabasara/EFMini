@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<metadata>
+  <enumerations>
+    
+  </enumerations>
+
+
+  <entities>
+    <entity id="Rooms.Room">
+      <properties>
+        <property id="Status" value="Clean"/>
+      </properties>
+      <extensions>
+        <extension property="StatusColor" type="CodeExtension" >
+          <parameters>
+            <parameter id="Source" >
+              <![CDATA[
+                      if (record == null) 
+                        return "Gray";
+                
+                      if(string.Equals(record["Status"], "Clean"))
+                        return "Green";
+                      if(string.Equals(record["Status"], "OCCUPIED"))
+                        return "Orange";
+                      if(string.Equals(record["Status"], "DIRTY"))
+                        return "Red";
+                      return "Gray";
+                    ]]>
+            </parameter>
+          </parameters>
+        </extension>
+      </extensions>
+    </entity>
+  </entities>
+</metadata>
+
