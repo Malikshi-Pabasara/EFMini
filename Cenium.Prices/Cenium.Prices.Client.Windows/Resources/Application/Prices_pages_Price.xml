@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ui>
+  <!-- Add panes here-->
+  <panes>
+
+  </panes>
+
+  <!-- Add dialogs here -->
+  <dialogs>
+
+    <!-- Add dialogs here -->
+
+  </dialogs>
+
+  <!-- Add pages here-->
+  <pages>
+    <page id="prices.page.price" name="Prices" description="Add and maintain prices information" model="framework.pages.listviewmodel" type="framework.listitempage">
+
+      <properties>
+        <property id="Columns" value="2" type="Int" />
+        <property id="ColumnLayout" value="WideFirstColumn" />
+      </properties>
+
+
+        <modelProperties>
+        <property id="CreateMethod" value="Prices/Price/Create" />
+        <property id="QueryMethod" value="Prices/Price/Query" />
+        <property id="GetMethod" value="Prices/Price/Get/{PriceId}" />
+        <property id="UpdateMethod" value="Prices/Price/Update" />
+        <property id="RemoveMethod" value="Prices/Price/Delete" />
+        <property id="IncludeChildRecords" value="true" type="Bool" />
+      </modelProperties>
+
+
+      <layout>
+        <section id="listView" readOnly="true" >
+          <items>
+            <item id="Name" type="TextBlock" labelVisibility="Collapsed">
+              <properties>
+                <property id="TextStyle" value="TitleText" />
+              </properties>
+            </item>
+          </items>
+        </section>
+
+
+        <section id="general" label="General" readOnly="false" constraints="column=0">
+          <items>
+            <item id="Name" label="Room Type:" type="framework.controls.data.ReferenceComboBox" readOnly="false" valueList="Rooms/RoomType/Query">
+              <properties>
+                <property id="DisplayPropertyName" value="RoomTypeName" />
+                <property id="SelectedValuePath" value="RoomTypeName"/>
+              </properties>
+            </item>
+            <item id="PriceCode" label="Price Code:" type="TextBox" readOnly="false" />
+            <item id="Amount" label="Amount:" type="NumberTextBox" readOnly="false" />
+            <item id="Description" label="Description:" type="specialized.multilinetextbox" readOnly="false"/>
+          </items>
+        </section>
+      </layout>
+      <actions>
+        <action id="clear" type="framework.ClearAction" />
+        <action id="refresh" type="framework.RefreshAction" />
+        <action id="save" type="framework.SaveAction" />
+        <action id="add" type="framework.CreateAction">
+        </action>
+
+        <action id="delete" type="framework.DeleteAction" >
+          <properties>
+            <property id="IsAutoSave" value="true" type="Bool" />
+            <property id="IsUserConfirmationRequired" value="true" type="Bool" />
+          </properties>
+        </action>
+      </actions>
+    </page>
+  </pages>
+</ui>
